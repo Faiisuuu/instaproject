@@ -32,7 +32,11 @@ function App() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3000/api/download', {
+const API_URL = import.meta.env.PROD 
+  ? 'https://instaproject-green.vercel.app'
+  : 'http://localhost:3000';
+
+const response = await fetch(`${API_URL}/api/download`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
